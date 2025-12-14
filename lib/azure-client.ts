@@ -1,7 +1,9 @@
 const AZURE_ENDPOINT =
   process.env.AZURE_ENDPOINT ||
-  "https://your-azure-endpoint.cognitiveservices.azure.com/openai/deployments/gpt-5-chat/chat/completions?api-version=2025-01-01-preview";
-const AZURE_API_KEY = process.env.AZURE_API_KEY || "";
+  "https://vmute-mio2aqwz-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-5-chat/chat/completions?api-version=2025-01-01-preview";
+const AZURE_API_KEY =
+  process.env.AZURE_API_KEY ||
+  "CC2ya28YUlW5gtlHlkE1YyEgUhuvvgGuPM26yRxFW0eLFQ7luDMNJQQJ99BLACHYHv6XJ3w3AAAAACOGY69n";
 
 export async function generateCreditData(count: number = 50) {
   const prompt = `Generate exactly ${count} realistic credit user profiles as a valid JSON array. Each profile must be a JSON object with these exact fields:
