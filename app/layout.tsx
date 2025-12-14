@@ -34,6 +34,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="credit-scoring-theme"
         >
           {children}
         </ThemeProvider>
