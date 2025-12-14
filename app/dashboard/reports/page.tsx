@@ -72,24 +72,26 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
             AI-Powered Reports
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground">
             Generate comprehensive financial reports for decision-making using
             Azure AI
           </p>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border bg-muted/50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border bg-muted/50 px-3 py-2 w-full sm:w-auto justify-center sm:justify-start">
           <Sparkles className="h-4 w-4 text-primary" />
-          <span className="text-sm font-medium">Powered by Azure AI</span>
+          <span className="text-xs sm:text-sm font-medium">
+            Powered by Azure AI
+          </span>
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-1 lg:grid-cols-2">
         <ReportGenerator
           reportType="credit-score"
           reportData={reportData}

@@ -29,13 +29,13 @@ export function Sidebar() {
 
   return (
     <div className="flex h-full w-full flex-col border-r border-sidebar-border bg-sidebar">
-      <div className="flex h-16 items-center justify-between border-b border-sidebar-border px-6">
-        <h1 className="text-lg font-semibold text-sidebar-foreground">
+      <div className="flex h-16 items-center justify-between border-b border-sidebar-border px-4 sm:px-6">
+        <h1 className="text-base sm:text-lg font-semibold text-sidebar-foreground">
           Credit Scoring
         </h1>
         <ThemeToggle />
       </div>
-      <nav className="flex-1 space-y-1 px-3 py-4">
+      <nav className="flex-1 space-y-1 px-2 sm:px-3 py-4">
         {navigation.map((item) => {
           const isActive =
             pathname === item.href || pathname?.startsWith(item.href + "/");
@@ -44,14 +44,14 @@ export function Sidebar() {
               key={item.name}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                "flex items-center gap-2 sm:gap-3 rounded-lg px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium transition-colors",
                 isActive
                   ? "bg-sidebar-accent text-sidebar-accent-foreground"
                   : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
               )}
             >
-              <item.icon className="h-5 w-5" />
-              {item.name}
+              <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="truncate">{item.name}</span>
             </Link>
           );
         })}
@@ -63,7 +63,7 @@ export function Sidebar() {
 export function MobileHeader() {
   return (
     <div className="md:hidden flex h-16 items-center justify-between border-b border-sidebar-border bg-sidebar px-4">
-      <h1 className="text-lg font-semibold text-sidebar-foreground">
+      <h1 className="text-base sm:text-lg font-semibold text-sidebar-foreground">
         Credit Scoring
       </h1>
       <ThemeToggle />

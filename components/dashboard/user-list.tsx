@@ -13,6 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import type { UserCreditProfile } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
@@ -92,11 +93,74 @@ export function UserList({ users: initialUsers }: UserListProps) {
             placeholder="Search users by name or email..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-9"
+            className="pl-9 text-sm sm:text-base"
           />
         </div>
       </div>
-      <div className="rounded-md border">
+      {/* Mobile Card View */}
+      <div className="block md:hidden space-y-3">
+        {sortedUsers.length === 0 ? (
+          <div className="text-center text-muted-foreground py-8">
+            No users found
+          </div>
+        ) : (
+          sortedUsers.map((user) => (
+            <Link key={user.id} href={`/dashboard/users/${user.id}`}>
+              <Card className="p-4 hover:bg-accent transition-colors">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="font-medium text-sm sm:text-base truncate">
+                      {user.name}
+                    </div>
+                    <div className="text-xs text-muted-foreground truncate mt-1">
+                      {user.email}
+                    </div>
+                    <div className="flex items-center gap-3 mt-3 flex-wrap">
+                      <div>
+                        <div className="text-xs text-muted-foreground">
+                          Credit Score
+                        </div>
+                        <span
+                          className={cn(
+                            "text-sm font-bold",
+                            getScoreColor(user.currentCreditScore)
+                          )}
+                        >
+                          {user.currentCreditScore}
+                        </span>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">
+                          Debt-to-Income
+                        </div>
+                        <div className="text-sm font-semibold">
+                          {(user.debtToIncomeRatio * 100).toFixed(1)}%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-end gap-2">
+                    <Badge
+                      variant={getRiskBadgeVariant(user.riskLevel)}
+                      className="text-xs"
+                    >
+                      {user.riskLevel.toUpperCase()}
+                    </Badge>
+                    <Badge
+                      variant={getStatusBadgeVariant(user.status)}
+                      className="text-xs"
+                    >
+                      {user.status.toUpperCase()}
+                    </Badge>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+          ))
+        )}
+      </div>
+      {/* Desktop Table View */}
+      <div className="hidden md:block rounded-md border">
         <Table>
           <TableHeader>
             <TableRow>

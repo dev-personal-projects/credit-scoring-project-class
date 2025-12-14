@@ -166,28 +166,38 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+            Dashboard
+          </h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Monitor user credit behavior and loan recommendations
           </p>
         </div>
-        <QuickActions onRefresh={loadData} onGenerateData={loadData} />
+        <div className="w-full sm:w-auto">
+          <QuickActions onRefresh={loadData} onGenerateData={loadData} />
+        </div>
       </div>
 
       <StatsCards metrics={metrics} />
 
       <PortfolioAIInsights metrics={metrics} />
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Card className="md:col-span-2 lg:col-span-2">
           <CardHeader>
-            <CardTitle>Credit Score Distribution</CardTitle>
+            <CardTitle className="text-base sm:text-lg">
+              Credit Score Distribution
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer
+              width="100%"
+              height={250}
+              className="sm:h-[300px]"
+            >
               <BarChart data={scoreDistribution}>
                 <defs>
                   <linearGradient
@@ -268,12 +278,14 @@ export default function DashboardPage() {
         <AIChat context={{ metrics, users }} />
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Top Risk Users</CardTitle>
-            <Link href="/dashboard/users">
-              <Button variant="outline" size="sm">
+          <CardHeader className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <CardTitle className="text-base sm:text-lg">
+              Top Risk Users
+            </CardTitle>
+            <Link href="/dashboard/users" className="w-full sm:w-auto">
+              <Button variant="outline" size="sm" className="w-full sm:w-auto">
                 View All
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -297,10 +309,15 @@ export default function DashboardPage() {
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Recent Recommendations</CardTitle>
-            <Link href="/dashboard/recommendations">
-              <Button variant="outline" size="sm">
+          <CardHeader className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <CardTitle className="text-base sm:text-lg">
+              Recent Recommendations
+            </CardTitle>
+            <Link
+              href="/dashboard/recommendations"
+              className="w-full sm:w-auto"
+            >
+              <Button variant="outline" size="sm" className="w-full sm:w-auto">
                 View All
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

@@ -5,7 +5,7 @@ import { Sidebar, MobileHeader } from "@/components/dashboard/sidebar";
 
 const MIN_SIDEBAR_WIDTH = 200;
 const MAX_SIDEBAR_WIDTH = 600;
-const DEFAULT_SIDEBAR_WIDTH = 256; // w-64 = 256px                                                        
+const DEFAULT_SIDEBAR_WIDTH = 256; // w-64 = 256px
 
 export default function DashboardLayout({
   children,
@@ -97,7 +97,7 @@ export default function DashboardLayout({
         }`}
       />
       <main className="flex-1 overflow-y-auto bg-background">
-        <div className="container mx-auto p-4 md:p-6">{children}</div>
+        <div className="container mx-auto p-3 sm:p-4 md:p-6">{children}</div>
       </main>
     </div>
   );

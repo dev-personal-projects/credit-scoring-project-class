@@ -46,8 +46,10 @@ export function StatsCards({ metrics }: StatsCardsProps) {
             <stat.icon className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stat.value}</div>
-            <p className="text-xs text-muted-foreground">{stat.description}</p>
+            <div className="text-xl sm:text-2xl font-bold">{stat.value}</div>
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              {stat.description}
+            </p>
           </CardContent>
         </Card>
       ))}
